@@ -1,9 +1,13 @@
 <h1 align="center">Turns Codebase into Coding Puzzles with AI</h1>
 
-*This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. The idea came to me when I was trying to study for interviews and I felt I wanted to learn concepts and techniques used in good open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutoprial is a **passive** form of learning. True learning is hands-on and happens when code something yourself. This wil lgenerate you coding puzzles that you can use to practice for interviews or just to get a stronger foundatoinal understanding of tools.
+
 <p align="center">
 <img width="600" height="370" alt="image" src="https://github.com/user-attachments/assets/ef6478f5-9c7b-49a9-8388-803a2b1cef97" />
 </p>
+
+This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. The idea came to me when I was trying to study for interviews and I felt I wanted to learn concepts and techniques used in good open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutoprial is a **passive** form of learning. True learning is hands-on and happens when code something yourself. This wil lgenerate you coding puzzles that you can use to practice for interviews or just to get a stronger foundatoinal understanding of tools.
+
+
 
 ## 🚀 Getting Started
 
@@ -37,7 +41,9 @@
     - `-i, --include` - Files to include (e.g., "`*.py`" "`*.js`")
     - `-e, --exclude` - Files to exclude (e.g., "`tests/*`" "`docs/*`")
     - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
-    - `--max-concepts` - Maximum number of concepts to generate puzzles for to identify (default: 10)
+    - `--max-concepts` - Maximum number of concepts to generate puzzles for to identify (default: 5)
+    - `--include-hints` - Whether to include solution hints in the generated puzzles
+    - `--puzzle-count` - Number of puzzles to generate per concept
     - `--no-cache` - Disable LLM response caching (default: caching enabled)
 
 The application will crawl the repository, analyze the codebase structure, generate coding puzzles in the specified language, and save the output in the specified directory (default: ./output).
