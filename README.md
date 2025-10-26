@@ -1,17 +1,6 @@
 <h1 align="center">Turns Codebase into Coding Puzzles with AI</h1>
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
- <a href="https://discord.gg/hUHHE9Sa6T">
-    <img src="https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat">
-</a>
 > *Want to master a new codebase by solving practical challenges? This is a simple AI agent that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. Learning is all about doing!*
-
-<p align="center">
-  <img
-    src="./assets/banner.png" width="800"
-  />
-</p>
-
 
 
 &nbsp;&nbsp;**🔸 🎉 Reached Hacker News Front Page** (April 2025) with >900 up‑votes:  [Discussion »](https://news.ycombinator.com/item?id=43739456)
@@ -22,7 +11,7 @@
 
 1. Clone this repository
    ```bash
-   git clone https://github.com/The-Pocket/code-to-puzzle
+   git clone https://github.com/mukhal/codebase-to-puzzles
    ```
 
 3. Install dependencies:
@@ -39,13 +28,8 @@
 5. Generate coding puzzles from a codebase by running the main script:
     ```bash
     # Analyze a GitHub repository
-    python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
+    python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --max-concepts 5
 
-    # Or, analyze a local directory
-    python main.py --dir /path/to/your/codebase --include "*.py" --exclude "*test*"
-
-    # Or, generate puzzles in Chinese
-    python main.py --repo https://github.com/username/repo --language "Chinese"
     ```
 
     - `--repo` or `--dir` - Specify either a GitHub repo URL or a local directory path (required, mutually exclusive)
@@ -55,8 +39,7 @@
     - `-i, --include` - Files to include (e.g., "`*.py`" "`*.js`")
     - `-e, --exclude` - Files to exclude (e.g., "`tests/*`" "`docs/*`")
     - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
-    - `--language` - Language for the generated puzzles (default: "english")
-    - `--max-abstractions` - Maximum number of abstractions to identify (default: 10)
+    - `--max-concepts` - Maximum number of abstractions to identify (default: 10)
     - `--no-cache` - Disable LLM response caching (default: caching enabled)
 
 The application will crawl the repository, analyze the codebase structure, generate coding puzzles in the specified language, and save the output in the specified directory (default: ./output).
