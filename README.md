@@ -1,4 +1,6 @@
-<h1 align="center">Turn any codebase into coding puzzles</h1>
+# codebase-to-puzzles
+
+
 
 
 <p align="center">
