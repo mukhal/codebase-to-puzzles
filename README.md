@@ -7,6 +7,8 @@
 <img width="600" height="370" alt="image" src="https://github.com/user-attachments/assets/ef6478f5-9c7b-49a9-8388-803a2b1cef97" />
 </p>
 
+> Turn any codebase into coding puzzles to maximize understanding 
+
 This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. The idea came to me when I was trying to study for interviews and I felt I wanted to learn concepts and techniques used in good open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutoprial is a **passive** form of learning. True learning is hands-on and happens when code something yourself. This wil lgenerate you coding puzzles that you can use to practice for interviews or just to get a stronger foundatoinal understanding of tools.
 
 
