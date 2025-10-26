@@ -1,11 +1,6 @@
 <h1 align="center">Turns Codebase into Coding Puzzles with AI</h1>
 
-> *Want to master a new codebase by solving practical challenges? This is a simple AI agent that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. Learning is all about doing!*
-
-
-&nbsp;&nbsp;**🔸 🎉 Reached Hacker News Front Page** (April 2025) with >900 up‑votes:  [Discussion »](https://news.ycombinator.com/item?id=43739456)
-
-&nbsp;&nbsp;**🔸 🎊 Online Service Now Live!** (May&nbsp;2025) Try our new online version at [https://code2puzzle.com/](https://code2puzzle.com/) – just paste a GitHub link, no installation needed!
+*This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand how the code works. The idea came to me when I was trying to study for interviews and I felt I wanted to learn concepts and techniques used in good open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutoprial is a **passive** form of learning. True learning is hands-on and happens when code something yourself. This wil lgenerate you coding puzzles that you can use to practice for interviews or just to get a stronger foundatoinal understanding of tools.
 
 ## 🚀 Getting Started
 
@@ -39,7 +34,7 @@
     - `-i, --include` - Files to include (e.g., "`*.py`" "`*.js`")
     - `-e, --exclude` - Files to exclude (e.g., "`tests/*`" "`docs/*`")
     - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
-    - `--max-concepts` - Maximum number of abstractions to identify (default: 10)
+    - `--max-concepts` - Maximum number of concepts to generate puzzles for to identify (default: 10)
     - `--no-cache` - Disable LLM response caching (default: caching enabled)
 
 The application will crawl the repository, analyze the codebase structure, generate coding puzzles in the specified language, and save the output in the specified directory (default: ./output).
