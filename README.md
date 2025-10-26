@@ -1,4 +1,4 @@
-<h1 align="center">Turns Codebase into Coding Puzzles with AI</h1>
+<h1 align="center">Turn any codebase into coding puzzles</h1>
 
 
 <p align="center">
