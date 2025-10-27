@@ -8,9 +8,8 @@ dotenv.load_dotenv()
 
 # Default file patterns
 DEFAULT_INCLUDE_PATTERNS = {
-    "*.py", "*.js", "*.jsx", "*.ts", "*.tsx", "*.go", "*.java", "*.pyi", "*.pyx",
-    "*.c", "*.cc", "*.cpp", "*.h", "*.md", "*.rst", "*Dockerfile",
-    "*Makefile", "*.yaml", "*.yml",
+    "*.py", "*.js", "*.jsx", "*.ts", "*.tsx", "*.go", "*.java",
+    "*.c", "*.cc", "*.cpp", "*.h"
 }
 
 DEFAULT_EXCLUDE_PATTERNS = {
@@ -20,7 +19,6 @@ DEFAULT_EXCLUDE_PATTERNS = {
     "*.venv/*",
     "*test*",
     "*tests/*",
-    "*examples/*",
     "v1/*",
     "*dist/*",
     "*build/*",
@@ -34,6 +32,8 @@ DEFAULT_EXCLUDE_PATTERNS = {
     "*node_modules/*",
     "*.log",
     "*config/*",
+    "*recipes/*",
+    "*logging*",
 }
 
 # --- Main Function ---

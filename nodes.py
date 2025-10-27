@@ -32,7 +32,7 @@ class FetchRepo(Node):
             else:
                 project_name = os.path.basename(os.path.abspath(local_dir))
             shared["project_name"] = project_name
-
+            
         # Get file patterns directly from shared
         include_patterns = shared["include_patterns"]
         exclude_patterns = shared["exclude_patterns"]
@@ -141,7 +141,7 @@ Codebase Context:
 {context}
 
 {language_instruction}Analyze the codebase context.
-You are a course instructor and you want to design deep and meaningful assignments for your students that builds their intuition and understanding of important concepts in the codebase. Identify the top 5-{max_concept_num} most technically-interesting concepts that students with little to no experience in the codebase need to master to be able to build on top of the codebase. These concepts will be used later to generate useful exercises/puzzles for students to practice and reinforce their understanding.
+You are a course instructor and you want to design deep and meaningful assignments for your students that builds their intuition and understanding of important concepts in NLP, machine learning, and AI. Identify the top 3-{max_concept_num} most important concepts in the codebase. These concepts should be foundational and essential for students with little to no experience in the codebase to master to be able to build on top of the codebase. These concepts will be used later to generate useful exercises/puzzles for students to practice and reinforce their understanding. Avoid concepts that are too specific to the codebase and only relevant to the codebase and focus on concepts that are general and applicable to a wide range of AI, machine learning, and NLP projects.
 
 For each concept, provide:
 1. A concise `name`{name_lang_hint}.
@@ -311,12 +311,12 @@ Context (Concepts, Descriptions, Code):
 
 Please generate a set of puzzles on the given concepts. Each puzzle is a self-contained file with a single exercise that aims to test the understanding of the concept. The puzzle should be:
 
-- About a core concept or idea in the concept. Avoid trivial puzzles related to syntax, configuration, or other low-level details.
-- Specific and detailed. The student should be able to understand exactly what is required. Avoid vague or ambiguous descriptions.
+- About a core/foundational concept or idea. Avoid trivial puzzles related to syntax, configuration, registry, preprocessing, postprocessing, or any other low-level details. Avoid super easy puzzles that can be solved in a few lines of code. Remember the puzle has to be challenging enough to test the student's deep understanding of the concept.
+- The student should be able to understand exactly what is required. Avoid vague or ambiguous descriptions.
 - self-contained and standalone. That is the puzzle file should run independently and should not depend on other files. Make sure you import all needed modules and libraries.
-- include boilerplate code to help the student get started with the solution parts marked as "TODO" for the student to fill in. The file should NOT include the solution.
-- {f"Include slight hints to the solution as comments." if include_hints else ""}
-- Include a simple test case to test the student's solution.
+- Mark the parts where the student should fill in the code as "TODO". The file should NOT include the solution or give away the answer in the comments.
+- (optionally) Include a simple test case to test the student's solution.
+{f"- Include slight hints to the solution as comments." if include_hints else ""}
 
 You must generate exactly {puzzle_count} different puzzles for each concept.
 
@@ -395,12 +395,14 @@ class WritePuzzles(Node):
             concept_description = "# " + puzzle["concept_description"].replace("\n", "\n# ")
             puzzle_description = "# " + puzzle["puzzle_description"].replace("\n", "\n# ")
             puzzle_code = puzzle["puzzle_code"]
-            puzzle_file_name = puzzle["puzzle_name"].lower().replace(" ", "_").strip() + ".py"
+            puzzle_file_name = puzzle["puzzle_name"].lower().replace(" ", "_").strip()
+            if not puzzle_file_name.endswith(".py"):
+                puzzle_file_name += ".py"
             puzzle_file_path = os.path.join(output_dir, project_name, "puzzles", puzzle_file_name)
             
             with open(puzzle_file_path, "w", encoding="utf-8") as f:
-                f.write(puzzle_description)
-                f.write(concept_description)
+                f.write(puzzle_description+"\n\n")
+                f.write(concept_description+"\n\n")
                 f.write(puzzle_code)
             print(f"  - Wrote {puzzle_file_path}")
         

@@ -12,8 +12,8 @@ def create_puzzle_flow():
 
     # Instantiate nodes
     fetch_repo = FetchRepo()
-    identify_concepts = IdentifyConcepts(max_retries=1, wait=20)
-    generate_puzzles = GeneratePuzzles(max_retries=1, wait=20)
+    identify_concepts = IdentifyConcepts(max_retries=3, wait=20)
+    generate_puzzles = GeneratePuzzles(max_retries=3, wait=20)
     write_puzzles = WritePuzzles()
     # Connect nodes in sequence based on the design
     fetch_repo >> identify_concepts
