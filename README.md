@@ -53,7 +53,7 @@ This is a super simple LLM "agent" that analyzes a GitHub repository and generat
 The application will crawl the repository, analyze the codebase structure, generate coding puzzles in the specified language, and save the output in the specified directory (default: ./output).
 
 ## Examples
-Here are some example generated puzzles! 
+Here are some example generated puzzles using `o4-mini`:
 
 ### Codebase: [nanogpt](https://github.com/karpathy/nanoGPT)
 ```python
@@ -152,8 +152,85 @@ if __name__ == "__main__":
     test_sample_next_token()
 ```
 
+### Codebase: [open-r1](https://github.com/huggingface/open-r1)
+```python
+# Implement the **n-gram repetition penalty reward**: for each completion text,
+# extract all word-level n-grams of size `ngram_size`, compute the fraction of
+# unique n-grams vs total, then scale by `max_penalty` (negative) to penalize repetition.
+# 
 
-## Acknowledgmens
+# Reward functions are the grading rubric for models: they score outputs based on correctness, style, or length. 
+# In reinforcement learning or RLHF, custom reward modules—such as accuracy checks, format tags, or code execution success— 
+# guide models toward desired behaviors. Understanding how to design and compose these rewards is key to training 
+# intelligent agents and steering their learning.
+# 
+
+def repetition_penalty_reward(texts, ngram_size, max_penalty):
+    """
+    Args:
+        texts (list of str): Generated completion strings.
+        ngram_size (int): Size of each n-gram window (e.g., 3).
+        max_penalty (float): Negative value, maximum penalty when all n-grams repeat.
+
+    Returns:
+        List of float penalties (one per text).
+    """
+    # TODO: for each text, split into words, build list of n-grams,
+    #       compute unique count vs total count,
+    #       penalty = (1 - unique/total) * max_penalty,
+    #       handle short texts gracefully.
+    raise NotImplementedError
+
+if __name__ == "__main__":
+    samples = ["a b a b a b", "no repetition here"]
+    penalties = repetition_penalty_reward(samples, ngram_size=2, max_penalty=-1.0)
+    print(penalties)
+    # Expect something like [-1.0, 0.0]
+```
+```python
+# A puzzle on creating a **mixture of Hugging Face datasets**.
+# Implement a function to load multiple datasets, apply *weight-based subsampling*, shuffle them, and split into train/test.
+# 
+
+# Datasets are like recipe ingredients: you load them, pick the parts you need, and mix them in specific ratios. 
+# In code, we use Hugging Face’s `load_dataset` to fetch data, shuffle or split it, select columns, and even combine multiple sources 
+# into a “mixture.” Preprocessing cleans and normalizes text so it’s ready for models, much like washing and chopping veggies 
+# before cooking. Mastering dataset handling ensures the right “ingredients” go into your NLP or ML pipeline.
+# 
+
+from datasets import load_dataset, concatenate_datasets, DatasetDict
+
+def create_mixture(dataset_ids, weights, seed=42, test_split_size=None):
+    """
+    Load multiple Hugging Face datasets by ID, subsample each according to weights,
+    concatenate them, shuffle with the given seed, and optionally split into train/test.
+
+    Args:
+        dataset_ids (list of str): Names of datasets (e.g., ["ag_news", "yelp_polarity"])
+        weights (list of float): Corresponding weights ∈ (0,1] for subsampling.
+        seed (int): Random seed for reproducibility.
+        test_split_size (float or None): Fraction for test split (e.g., 0.1). If None, return train only.
+
+    Returns:
+        DatasetDict with 'train' and optional 'test' splits.
+    """
+    # TODO: load each dataset, shuffle with seed, select int(len*weight)) examples,
+    #       concatenate all, shuffle again with seed, then optionally train_test_split.
+    raise NotImplementedError
+
+if __name__ == "__main__":
+    # Simple smoke test: mix two small datasets
+    mixture = create_mixture(
+        ["ag_news", "yelp_polarity"],
+        [0.05, 0.1],
+        seed=0,
+        test_split_size=0.1,
+    )
+    print(mixture)
+    # Should print a DatasetDict with 'train' and 'test' splits.
+```
+
+## Acknowledgments
 
 This is largely based on [Pocket Flow](https://github.com/The-Pocket/PocketFlow). 
 
