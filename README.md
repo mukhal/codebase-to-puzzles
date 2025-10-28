@@ -79,16 +79,6 @@ def causal_self_attention(q, k, v):
     returns: attention output of same shape.
     """
     # TODO: implement scaled dot-product attention with a causal mask.
-    seq_len = q.shape[1]
-    dim = q.shape[2]
-    
-    scores = q @ k.transpose(-2, -1) / math.sqrt(dim)
-    mask = ~torch.tril(torch.ones(seq_len, seq_len)).bool()
-    scores = scores.masked_fill(mask, float('-inf'))
-    attn_weights = torch.softmax(scores, dim=-1)
-    output = attn_weights @ v
-    return output
-    
     raise NotImplementedError
 
 def test_causal_self_attention():
