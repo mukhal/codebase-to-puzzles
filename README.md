@@ -9,7 +9,7 @@
 
 > Turn any (ML) codebase into coding puzzles for hands-on understanding 
 
-This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand different ML/NLP concepts used in the code. The idea came to me when I was trying to prep for job interviews and I felt I wanted to learn concepts and techniques used in good open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutorial is a **passive** form of learning. True learning is hands-on and happens when you code something yourself. This will generate you coding puzzles that you can use to practice for interviews or just to get a stronger foundational understanding of tools.
+This is a super simple LLM "agent" that analyzes a GitHub repository and generates hands-on coding puzzles to help you understand different ML/NLP concepts used in the code. The idea came to me when I was trying to prep for job interviews and I felt I wanted to learn concepts and techniques used in widely-used open-source codebases. While there are tools [codebase-2-tutorial](https://code2tutorial.com/), reading a tutorial is a **passive** form of learning. True learning is hands-on and happens when you code something yourself. This will generate you coding puzzles that you can use to practice for interviews or just to get a stronger foundational understanding of tools.
 
 
 
